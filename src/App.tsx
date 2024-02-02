@@ -1,8 +1,11 @@
-import { Outlet, Route, Routes } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { BrowserRouter, Outlet, Route, Routes } from 'react-router-dom';
 import { Layout } from './layouts/Layout';
-import { Dashboard } from './pages/Dashboard';
 import { PageNotFound } from './pages/NotFoundPage';
+import { NotesPage } from './pages/NotesPage';
 import { ThemeProvider } from './providers/themeProvider';
+import { getNotes } from './services/notesServices';
 
 const LayoutWrapper = () => {
   return (
@@ -13,14 +16,22 @@ const LayoutWrapper = () => {
 };
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    getNotes(dispatch);
+  }, [dispatch]);
+
   return (
     <ThemeProvider defaultTheme="light" storageKey="supernotes-ui-theme">
-      <Routes>
-        <Route element={<LayoutWrapper />}>
-          <Route path="/" element={<Dashboard />} />
-        </Route>
-        <Route path="*" element={<PageNotFound />} />
-      </Routes>
+      <BrowserRouter>
+        <Routes>
+          <Route element={<LayoutWrapper />}>
+            <Route path="/" element={<NotesPage />} />
+          </Route>
+          <Route path="*" element={<PageNotFound />} />
+        </Routes>
+      </BrowserRouter>
     </ThemeProvider>
   );
 }
