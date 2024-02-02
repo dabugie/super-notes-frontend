@@ -6,7 +6,7 @@ import {
   DropdownMenuRadioItem,
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu';
-import { LANGUAGES } from '@/models/Languages.model';
+import { LANGUAGES } from '@/models/languages.model';
 import { Globe } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
