@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { BrowserRouter, Outlet, Route, Routes } from 'react-router-dom';
 import { Layout } from './layouts/Layout';
 import { PageNotFound } from './pages/NotFoundPage';
-import { NotesPage } from './pages/NotesPage';
+import { NotesPage } from './pages/notes/NotesPage';
 import { ThemeProvider } from './providers/themeProvider';
 import { getNotes } from './services/notesServices';
 
@@ -28,6 +28,7 @@ function App() {
         <Routes>
           <Route element={<LayoutWrapper />}>
             <Route path="/" element={<NotesPage />} />
+            <Route path="/:noteId" element={<NotesPage />} />
           </Route>
           <Route path="*" element={<PageNotFound />} />
         </Routes>

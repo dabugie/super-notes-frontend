@@ -1,8 +1,13 @@
 {
   "title": "Notes",
-
   "theme-label": "Toggle theme",
   "theme-light": "Light",
   "theme-dark": "Dark",
-  "theme-system": "System"
+  "theme-system": "System",
+  "add-note": "Add note",
+  "save-note": "Save",
+  "note-title": "Title",
+  "note-content": "Content",
+  "note-label": "Create a new note!",
+  "note-detail-view": "Note detail"
 }

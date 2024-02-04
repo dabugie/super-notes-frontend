@@ -21,6 +21,7 @@ const notesSlice = createSlice({
       state.isLoading = true;
       state.error = null;
     },
+
     unSetLoading(state) {
       state.isLoading = false;
     },
@@ -35,9 +36,40 @@ const notesSlice = createSlice({
       state.notes = [];
       state.isLoading = false;
       state.error = action.payload;
+    },
+
+    setNewNote(state, action) {
+      state.notes.push(action.payload);
+      state.isLoading = false;
+      state.error = null;
+    },
+
+    updateNote(state, action) {
+      const noteIndex = state.notes.findIndex((note) => note.id === action.payload.id);
+
+      if (noteIndex !== -1) {
+        state.notes[noteIndex] = action.payload;
+      }
+
+      state.isLoading = false;
+      state.error = null;
+    },
+
+    removeNote(state, action) {
+      state.notes = state.notes.filter((note) => note.id !== action.payload);
+      state.isLoading = false;
+      state.error = null;
     }
   }
 });
 
-export const { setLoading, unSetLoading, notesSuccess, notesFailure } = notesSlice.actions;
+export const {
+  setLoading,
+  unSetLoading,
+  notesSuccess,
+  notesFailure: notesFailed,
+  setNewNote,
+  updateNote,
+  removeNote
+} = notesSlice.actions;
 export default notesSlice.reducer;
