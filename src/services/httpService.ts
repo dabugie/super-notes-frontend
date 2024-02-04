@@ -1,11 +1,7 @@
 import axios from 'axios';
 import type { AxiosRequestConfig } from 'axios';
 
-const baseURL = 'http://localhost:3000/api';
-// const baseURL = import.meta.env.VITE_API_URL;
-
-console.log('baseURL', baseURL);
-
+const baseURL = import.meta.env.VITE_API_URL;
 
 const httpService = axios.create({
   baseURL,

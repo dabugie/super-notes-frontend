@@ -8,5 +8,6 @@
   "save-note": "Guardar",
   "note-title": "Título",
   "note-content": "Contenido",
-  "note-label": "¡Crea una nueva nota!"
+  "note-label": "¡Crea una nueva nota!",
+  "note-detail-view": "Detalles de la nota"
 }
