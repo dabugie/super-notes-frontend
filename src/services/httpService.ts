@@ -1,7 +1,11 @@
 import axios from 'axios';
 import type { AxiosRequestConfig } from 'axios';
 
-const baseURL = 'https://nestjs-backend-test.onrender.com/api';
+const baseURL = 'http://localhost:3000/api';
+// const baseURL = import.meta.env.VITE_API_URL;
+
+console.log('baseURL', baseURL);
+
 
 const httpService = axios.create({
   baseURL,

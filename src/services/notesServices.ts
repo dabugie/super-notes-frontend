@@ -7,6 +7,9 @@ export const getNotes = async (dispatch: Dispatch) => {
   try {
     const response: Note[] | undefined = await get('/notes');
 
+    console.log('response', response);
+    
+
     if (response) {
       dispatch(notesActions.notesSuccess(response));
     }
