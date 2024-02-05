@@ -12,7 +12,7 @@ export const getNotes = async (dispatch: Dispatch) => {
       dispatch(notesActions.notesSuccess(response));
     }
   } catch (error) {
-    dispatch(notesActions.notesFailed(error));
+    handleApiError(dispatch, error);
   }
 };
 
@@ -26,29 +26,34 @@ export const createNote = async (dispatch: Dispatch, note: NoteDto) => {
       dispatch(notesActions.setNewNote(response));
     }
   } catch (error) {
-    dispatch(notesActions.notesFailed(error));
+    handleApiError(dispatch, error);
   }
 };
 
 export const getNoteById = async (dispatch: Dispatch, id: string) => {
   try {
+    dispatch(selectedNoteActions.unSetSelectedNote());
+
     dispatch(selectedNoteActions.setLoading());
 
     const response: Note | undefined = await get(`/notes/${id}`);
 
     if (response) {
       dispatch(selectedNoteActions.selectedNoteSuccess(response));
+      return true;
     }
+
+    return false;
   } catch (error) {
     dispatch(selectedNoteActions.selectedNoteFailed(error as string));
   }
 };
 
-export const updateNote = async (dispatch: Dispatch, note: Note) => {
+export const updateNote = async (dispatch: Dispatch, noteId: string, note: NoteDto) => {
   try {
     dispatch(selectedNoteActions.setLoading());
 
-    const response: Note | undefined = await put(`/notes/${note.id}`, note);
+    const response: Note | undefined = await put(`/notes/${noteId}`, note);
 
     if (response) {
       dispatch(notesActions.updateNote(response));
@@ -68,4 +73,8 @@ export const deleteNote = async (dispatch: Dispatch, id: string) => {
   } catch (error) {
     dispatch(notesActions.notesFailed(error as string));
   }
+};
+
+const handleApiError = (dispatch: Dispatch, error: any) => {
+  dispatch(notesActions.notesFailed(error as string));
 };

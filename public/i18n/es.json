@@ -9,5 +9,6 @@
   "note-title": "Título",
   "note-content": "Contenido",
   "note-label": "¡Crea una nueva nota!",
-  "note-detail-view": "Detalles de la nota"
+  "note-detail-view": "Detalles de la nota",
+  "note-edit-view": "Editar nota"
 }
