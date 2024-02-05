@@ -75,7 +75,7 @@ export const NotesPage = () => {
       </article>
 
       <EditNote open={openEdit} />
-      <ViewNoteDetail open={open} setOpen={setOpen} />
+      <ViewNoteDetail open={open} />
     </section>
   );
 };
