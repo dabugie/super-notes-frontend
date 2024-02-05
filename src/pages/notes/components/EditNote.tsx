@@ -1,7 +1,7 @@
 import { noteSchema } from '@/models/validators/createNote';
 import type { RootState } from '@/store/store';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { set, useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import type { z } from 'zod';
@@ -10,9 +10,8 @@ import { Button, Icons, Input, Textarea } from '@/components';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import type { Note } from '@/models/note.model';
-import { useEffect } from 'react';
-import { useState, type SyntheticEvent } from 'react';
 import { updateNote } from '@/services/notesServices';
+import { useEffect, useState, type SyntheticEvent } from 'react';
 
 export const EditNote = ({ open }: { open: boolean }) => {
   const selectedNote = useSelector<RootState, Note | null>((state: RootState) => state.selectedNote.note);
