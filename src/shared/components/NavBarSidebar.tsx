@@ -3,6 +3,7 @@ import { AlignLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { ToggleMode } from './ToggleMode';
 import { LanguageMode } from './LanguageMode';
+import { UserNav } from './UserNav';
 
 export const NavBarSidebar = ({ setIsSidebarOpen }: any) => {
   const toggleSidebar = () => setIsSidebarOpen((prev: any) => !prev);
@@ -22,6 +23,7 @@ export const NavBarSidebar = ({ setIsSidebarOpen }: any) => {
           <div className="flex items-center gap-2">
             <LanguageMode />
             <ToggleMode />
+            <UserNav />
           </div>
         </div>
       </div>

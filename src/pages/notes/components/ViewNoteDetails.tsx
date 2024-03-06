@@ -6,16 +6,21 @@ import { useEffect, useState } from 'react';
 
 import { useSelector } from 'react-redux';
 
-export const ViewNoteDetail = ({ open }: { open: boolean }) => {
+export const ViewNoteDetail = ({ open, setLoading }: { open: boolean; setLoading: any }) => {
   const selectedNote = useSelector<RootState, Note | null>((state: RootState) => state.selectedNote.note);
 
   const [openView, setOpenView] = useState(false);
 
   useEffect(() => {
+    if (open) setLoading(true);
+
     if (selectedNote && open) {
-      setOpenView(true);
+      setTimeout(() => {
+        setLoading(false);
+        setOpenView(true);
+      }, 250);
     }
-  }, [open, selectedNote]);
+  }, [open, selectedNote, setLoading]);
 
   return (
     <Dialog open={openView} onOpenChange={setOpenView}>
