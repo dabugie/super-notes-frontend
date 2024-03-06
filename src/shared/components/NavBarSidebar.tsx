@@ -17,7 +17,7 @@ export const NavBarSidebar = ({ setIsSidebarOpen }: any) => {
               <AlignLeft />
             </Button>
             <Link to={'/'} className="flex md:mr-24 p-2">
-              <span className="text-xl font-semibold whitespace-nowrap dark:text-white">Super Notes</span>
+              <span className="text-xl font-semibold whitespace-nowrap dark:text-white">SuperNotes</span>
             </Link>
           </div>
           <div className="flex items-center gap-2">
