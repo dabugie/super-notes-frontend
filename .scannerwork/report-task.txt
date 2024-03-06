@@ -1,0 +1,6 @@
+projectKey=supernotes
+serverUrl=http://localhost:9000
+serverVersion=10.4.0.87286
+dashboardUrl=http://localhost:9000/dashboard?id=supernotes
+ceTaskId=ba35a7ea-8a37-438d-880a-0ebd273e5715
+ceTaskUrl=http://localhost:9000/api/ce/task?id=ba35a7ea-8a37-438d-880a-0ebd273e5715

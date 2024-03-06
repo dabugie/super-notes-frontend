@@ -13,7 +13,7 @@ import type { Note } from '@/models/note.model';
 import { updateNote } from '@/services/notesServices';
 import { useEffect, useState, type SyntheticEvent } from 'react';
 
-export const EditNote = ({ open }: { open: boolean }) => {
+export const EditNote = ({ open, setLoading }: { open: boolean; setLoading: any }) => {
   const selectedNote = useSelector<RootState, Note | null>((state: RootState) => state.selectedNote.note);
   const isLoading = useSelector((state: RootState) => state.notes.isLoading);
 
@@ -43,14 +43,17 @@ export const EditNote = ({ open }: { open: boolean }) => {
   const isFormValid = form.formState.isValid;
 
   useEffect(() => {
+    if (open) setLoading(true);
+
     if (selectedNote && open) {
       form.reset({
         title: selectedNote.title,
         content: selectedNote.content
       });
+      setLoading(false);
       setOpenEdit(true);
     }
-  }, [form, open, selectedNote]);
+  }, [form, open, selectedNote, setLoading]);
 
   return (
     <Dialog open={openEdit} onOpenChange={setOpenEdit}>

@@ -4,11 +4,22 @@
   "theme-light": "Light",
   "theme-dark": "Dark",
   "theme-system": "System",
+  "loading": "Loading...",
   "add-note": "Add note",
   "save-note": "Save",
   "note-title": "Title",
   "note-content": "Content",
   "note-label": "Create a new note!",
   "note-detail-view": "Note detail",
-  "note-edit-view": "Edit note"
+  "note-edit-view": "Edit note",
+  "logout": "Logout",
+  "first-name": "First name",
+  "last-name": "Last name",
+  "email": "Email",
+  "password": "Password",
+  "sign-in": "Sign In",
+  "sign-in-desc": "Enter your info below to sign in to your account",
+  "sign-up": "Sign Up",
+  "sign-up-desc": "Enter your info below to create an account",
+  "create-account": "Create an account"
 }
