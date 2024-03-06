@@ -1,6 +1,10 @@
 import { Button, Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components';
 import type { Note } from '@/models/note.model';
+import { get } from '@/services/httpService';
 import { deleteNote, getNoteById } from '@/services/notesServices';
+import { LoadingSpinner } from '@/shared/components/Loading';
+import { SkeletonCard } from '@/shared/components/SkeletonCard';
+import * as notesActions from '@/store/actions/notes/notesSlice';
 import type { RootState } from '@/store/store';
 import { Eye, Pencil, Trash2 } from 'lucide-react';
 import { useEffect, useState } from 'react';
@@ -9,10 +13,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { CreateNote } from './components/CreateNote';
 import { EditNote } from './components/EditNote';
 import { ViewNoteDetail } from './components/ViewNoteDetails';
-import { SkeletonCard } from '@/shared/components/SkeletonCard';
-import * as notesActions from '@/store/actions/notes/notesSlice';
-import { get } from '@/services/httpService';
-import { LoadingSpinner } from '@/shared/components/Loading';
 
 export const NotesPage = () => {
   const { t } = useTranslation();
@@ -108,7 +108,7 @@ export const NotesPage = () => {
         <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50 z-50">
           <div className="flex items-center gap-4">
             <p>{t('loading')}</p>
-            <LoadingSpinner size={50} />
+            <LoadingSpinner />
           </div>
         </div>
       )}
