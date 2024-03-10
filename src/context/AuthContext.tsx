@@ -1,6 +1,7 @@
 import type { UserSignUp } from '@/models/auth.model';
 import { post, get } from '@/services/httpService';
 import * as authActions from '@/store/actions/auth/authSlice';
+import * as noteActions from '@/store/actions/notes/notesSlice';
 import type { RootState } from '@/store/store';
 import { createContext, useContext, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -66,6 +67,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
       if (response) {
         dispatch(authActions.signOut());
+        dispatch(noteActions.unSetNotes());
         localStorage.removeItem('access_token');
         navigate('/signin');
       }
@@ -81,6 +83,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         const targetPath = currentPath === '/signin' || currentPath === '/signup' ? '/notes' : currentPath;
         navigate(targetPath, { replace: true });
       } else if (currentPath !== '/signin' && currentPath !== '/signup') {
+        dispatch(noteActions.unSetNotes());
         navigate('/signin', { replace: true });
       }
     };

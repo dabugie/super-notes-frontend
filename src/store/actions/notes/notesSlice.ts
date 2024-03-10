@@ -38,6 +38,12 @@ const notesSlice = createSlice({
       state.error = action.payload;
     },
 
+    unSetNotes(state) {
+      state.notes = [];
+      state.isLoading = false;
+      state.error = null;
+    },
+
     setNewNote(state, action) {
       state.notes.push(action.payload);
       state.isLoading = false;
@@ -63,13 +69,6 @@ const notesSlice = createSlice({
   }
 });
 
-export const {
-  setLoading,
-  unSetLoading,
-  notesSuccess,
-  notesFailure: notesFailed,
-  setNewNote,
-  updateNote,
-  removeNote
-} = notesSlice.actions;
+export const { setLoading, unSetLoading, notesSuccess, notesFailure, setNewNote, updateNote, removeNote, unSetNotes } =
+  notesSlice.actions;
 export default notesSlice.reducer;

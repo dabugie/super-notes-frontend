@@ -38,7 +38,7 @@ export const NotesPage = () => {
         }
       } catch (error: any) {
         console.error('Error getting notes:', error);
-        dispatch(notesActions.notesFailed(error.message as string));
+        dispatch(notesActions.notesFailure(error.message as string));
       }
     };
 

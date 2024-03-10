@@ -59,7 +59,7 @@ export const updateNote = async (dispatch: Dispatch, noteId: string, note: NoteD
       dispatch(notesActions.updateNote(response));
     }
   } catch (error) {
-    dispatch(notesActions.notesFailed(error as string));
+    dispatch(notesActions.notesFailure(error as string));
   }
 };
 
@@ -71,10 +71,10 @@ export const deleteNote = async (dispatch: Dispatch, id: string) => {
 
     dispatch(notesActions.removeNote(id));
   } catch (error) {
-    dispatch(notesActions.notesFailed(error as string));
+    dispatch(notesActions.notesFailure(error as string));
   }
 };
 
 const handleApiError = (dispatch: Dispatch, error: any) => {
-  dispatch(notesActions.notesFailed(error as string));
+  dispatch(notesActions.notesFailure(error as string));
 };
